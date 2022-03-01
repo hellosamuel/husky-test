@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn api-format && yarn ui-format
+yarn api-test && yarn ui-test
