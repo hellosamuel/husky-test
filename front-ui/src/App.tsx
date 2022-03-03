@@ -1,8 +1,7 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 
 const noUse = 'noUse'
-console.log('no console')
 
 function App() {
   return (
