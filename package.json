@@ -4,7 +4,7 @@
     "ui-format": "yarn --cwd front-ui lint-staged",
     "ui-test": "yarn --cwd front-ui test --watchAll=false",
     "api-format": "yarn --cwd api-server lint-staged",
-    "api-test": "yarn --cwd api-server test --watchAll=false",
+    "api-test": "yarn --cwd api-server tsc --noEmit && yarn --cwd api-server test --watchAll=false",
     "prepare": "husky install"
   },
   "dependencies": {
