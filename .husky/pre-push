@@ -15,7 +15,7 @@ testByProjectType() {
     api)
       local DIFF_FILES=$(git diff $2 --name-only | grep "api-server")
       if [ -n "$DIFF_FILES" ]; then
-        yarn api:pre-push
+        yarn api:test
       fi
       ;;
     ui)

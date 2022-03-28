@@ -17,7 +17,7 @@ function HelloMyName({ name = 'nobody' }: HelloMyNameProps) {
   const userName = useMemo(() => getUppercaseName(name), [name])
   return (
     <p>
-      Hello! <strong>{userName}</strong>
+      Hello! <strong>{userName}</strong>. Welcome to Husky Test.
     </p>
   )
 }
