@@ -10,7 +10,7 @@ if [ -n "$UPSTREAM_BRANCH" ]; then
   TEST_SUFFIX="current"
 fi
 
-testByProjectType() {
+testCheck() {
   case $1 in
     api)
       local DIFF_FILES=$(git diff $2 --name-only | grep "api-server")
@@ -30,5 +30,5 @@ testByProjectType() {
   esac
 }
 
-testByProjectType api $TARGET_BRANCH
-testByProjectType ui $TARGET_BRANCH
+testCheck api $TARGET_BRANCH
+testCheck ui $TARGET_BRANCH

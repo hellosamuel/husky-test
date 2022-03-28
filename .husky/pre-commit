@@ -5,7 +5,7 @@ UPSTREAM_BRANCH=`git for-each-ref --format='%(upstream:short)' $(git symbolic-re
 BASE_BRANCH="origin/master"
 TARGET_BRANCH=${UPSTREAM_BRANCH:-$BASE_BRANCH}
 
-codeStyleCheckByProjectType() {
+codeStyleCheck() {
   case $1 in
     api)
       local DIFF_FILES=$(git diff $2 --name-only | grep "api-server")
@@ -25,5 +25,5 @@ codeStyleCheckByProjectType() {
   esac
 }
 
-codeStyleCheckByProjectType api $TARGET_BRANCH
-codeStyleCheckByProjectType ui $TARGET_BRANCH
+codeStyleCheck api $TARGET_BRANCH
+codeStyleCheck ui $TARGET_BRANCH
