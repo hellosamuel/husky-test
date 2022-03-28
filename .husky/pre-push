@@ -1,0 +1,34 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# git rev-parse --abbrev-ref [branch name]@{upstream}은 upstream이 없을시 Error로 exit된다
+UPSTREAM_BRANCH=`git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)`
+BASE_BRANCH="origin/master"
+TARGET_BRANCH=${UPSTREAM_BRANCH:-$BASE_BRANCH}
+TEST_SUFFIX="master"
+if [ -n "$UPSTREAM_BRANCH" ]; then
+  TEST_SUFFIX="current"
+fi
+
+testByProjectType() {
+  case $1 in
+    api)
+      local DIFF_FILES=$(git diff $2 --name-only | grep "api-server")
+      if [ -n "$DIFF_FILES" ]; then
+        yarn api:pre-push
+      fi
+      ;;
+    ui)
+      local DIFF_FILES=$(git diff $2 --name-only | grep "front-ui")
+      if [ -n "$DIFF_FILES" ]; then
+        yarn ui:test-${TEST_SUFFIX}
+      fi
+      ;;
+    *)
+      echo "Skip>> Invalid project type: $1"
+      ;;
+  esac
+}
+
+testByProjectType api $TARGET_BRANCH
+testByProjectType ui $TARGET_BRANCH
