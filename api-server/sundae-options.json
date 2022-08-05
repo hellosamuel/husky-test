@@ -15,6 +15,10 @@
     {
       "name": "Salted caramel",
       "imagePath": "/images/salted-caramel.png"
+    },
+    {
+      "name": "Melon",
+      "imagePath": "/images/melon.png"
     }
   ],
   "toppings": [
