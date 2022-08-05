@@ -22,7 +22,7 @@ describe('test server', () => {
       return request(server)
         .get('/scoops')
         .then((response) => {
-          expect(response.body.length).toBe(4)
+          expect(response.body.length).toBe(5)
           response.body.forEach((flavor) => {
             expect(typeof flavor.name).toBe('string')
             expect(typeof flavor.imagePath).toBe('string')

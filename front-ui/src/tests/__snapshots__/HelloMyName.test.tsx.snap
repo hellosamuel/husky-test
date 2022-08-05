@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render HelloMyName correctly 1`] = `
+<DocumentFragment>
+  <p>
+    Hello! 
+    <strong>
+      Nobody
+    </strong>
+    . Welcome to Husky Test.
+  </p>
+</DocumentFragment>
+`;
